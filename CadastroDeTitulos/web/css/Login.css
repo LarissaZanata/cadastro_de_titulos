@@ -1,0 +1,36 @@
+@font-face {
+    font-family: Montserrat-Regular;
+    src: url('../fonts/montserrat/Montserrat-Regular.ttf'); 
+  }
+  
+  h1{
+    font-family: Montserrat-Regular, sans-serif;
+    text-align: center;
+    border: 2px solid;
+    background-color: lightgray;
+  }
+  
+  h2{
+    font-family: Montserrat-Regular, sans-serif;
+  }
+  
+  form{
+    background-color: aliceblue;
+    font-family: Montserrat-Regular, sans-serif;
+    padding: 10px;
+    font-size: 20px;
+    border: 2px solid;
+  }
+  
+  body{
+    background-color: lightcyan;
+   
+  }
+  
+  
+  
+  
+  
+  
+  
+  

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Cadastro</title>
+        <meta charset="utf-8"/>
+       <link rel="stylesheet" type="text/css" href="css/Cadastro.css" />
+    </h:head>
+    <h:body>
+        <h1>Condomínio Green Park</h1>
+        <h2>Editar - Controle de Títulos</h2>
+        <div id="formCad">
+            
+        <h:form id="form">
+
+            <h:outputText value="Descrição:" styleClass="rotulo" /><br></br>
+            <p:inputText id="nome1" title="Descrição" value="#{listarTitulos.titulo.descricao}" styleClass="campo"></p:inputText><br><br></br></br>
+                    
+            <h:outputText value="Data de Vencimento" styleClass="rotulo" /><br></br>
+            <p:inputMask id="teste" mask="99/99/9999" value="#{listarTitulos.titulo.dtVencimento}" required="true" requiredMessage="Preencha o campo data" size="10" />
+            <br><br></br></br> 
+            
+            <h:outputText value="Valor:" styleClass="rotulo" /><br></br>
+            <p:inputMask id="teste2" mask="999.99"  value="#{listarTitulos.titulo.valor}" required="true" requiredMessage="Preencha o campo valor" size="10"/>
+            <br><br></br></br>
+            
+                  
+            <h:selectOneMenu value="#{listarTitulos.titulo.status}">
+                <f:selectItem itemValue="Recebido" itemLabel="Recebido" />
+                <f:selectItem itemValue="Pendente" itemLabel="Pendente" />
+            </h:selectOneMenu>
+            <br><br></br></br>        
+            
+            <h:commandButton id="submit" value="Salvar" action="#{editarTitulo.salvar()}" styleClass="botao"/><br><br><br></br></br></br>            
+
+        </h:form>
+            
+ </div>
+    </h:body>
+</html>
