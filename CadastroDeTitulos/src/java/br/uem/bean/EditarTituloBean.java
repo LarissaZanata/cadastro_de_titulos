@@ -1,8 +1,10 @@
 package br.uem.bean;
 
 import br.uem.controller.CadastroController;
+import br.uem.dao.DaoTitulo;
 import br.uem.model.Titulo;
 import java.io.Serializable;
+import java.sql.SQLException;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -12,6 +14,8 @@ import javax.inject.Named;
 @Named(value = "editarTitulo")
 @SessionScoped
 public class EditarTituloBean implements Serializable {
+    
+    private DaoTitulo daoTitulo = new DaoTitulo();
     
     private String descricao;
     private String dtVencimento;
@@ -56,9 +60,11 @@ public class EditarTituloBean implements Serializable {
         this.status = status;
     }
     
-    
-    public String salvar() throws InterruptedException {
-        return "/listarTitulos";
+    public String salvar(Titulo titulo) throws InterruptedException, SQLException {
+        
+       boolean tituloSalvo = daoTitulo.salvaAlteracaoTitulo(titulo);
+        
+       return "/listarTitulosAdm";
     }   
     
 }

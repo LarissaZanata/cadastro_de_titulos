@@ -46,4 +46,16 @@ public class DaoLogin {
             return false;
         }
     }
+    
+    public boolean isAdministrador(String login) throws Exception{
+        String sql = "select * from usuarios where login = '" +login+"' and adm = 'Sim'";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+        
+        if(resultSet.next()){
+            return true;  //é adm
+        }else{
+            return false;  //não é adm
+        }
+    }
 }

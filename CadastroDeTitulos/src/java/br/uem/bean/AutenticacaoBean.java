@@ -2,6 +2,7 @@
 package br.uem.bean;
 
 import br.uem.dao.DaoLogin;
+import br.uem.utils.ReplicaUsuarioAtual;
 import java.io.Serializable;
 import static java.lang.System.out;
 import javax.enterprise.context.SessionScoped;
@@ -45,17 +46,29 @@ public class AutenticacaoBean implements Serializable{
     
     
     public String entrar() throws Exception{
-        boolean autentica = false;
-        autentica = daoLogin.validarLogin(this.getLogin(), this.getSenha());
+        setaUsuarioAtual(this.getLogin());
         
+        boolean autentica = false;
+        boolean isAdm = false;
+        autentica = daoLogin.validarLogin(this.getLogin(), this.getSenha());
+        isAdm = daoLogin.isAdministrador(this.getLogin());
         if(autentica){
-            return "/listarTitulosAdm";
+            if(isAdm){
+                return "/listarTitulosAdm";
+            }else{
+                return "/listarTitulos";
+            } 
         }else{
             FacesMessage msg = new FacesMessage("Usuário ou senha inválido!");
             FacesContext.getCurrentInstance().addMessage("erro", msg);
            return null; 
         }
         
+    }
+    
+    private void setaUsuarioAtual(String login){
+        ReplicaUsuarioAtual usuarioAtual = new ReplicaUsuarioAtual();
+        usuarioAtual.usuarioAtual = login;
     }
     
     

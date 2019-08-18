@@ -5,7 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Titulo {
     private static final AtomicInteger count = new AtomicInteger(0); 
-    private int id;
+    private String id;
     private String descricao;
     private String dtVencimento;
     private String valor;
@@ -13,18 +13,26 @@ public class Titulo {
 
     
     public Titulo(String descricao, String dtVenc, String valor, String status){
-        this.id=count.incrementAndGet();
+        //this.id=count.incrementAndGet();
         this.descricao = descricao;
         this.dtVencimento = dtVenc;
         this.valor = valor;
         this.status = status;
     }
     
-    public int getId() {
+    public Titulo(String codigo, String descricao, String dtVenc, String valor, String status){
+        this.id = codigo;
+        this.descricao = descricao;
+        this.dtVencimento = dtVenc;
+        this.valor = valor;
+        this.status = status;
+    }
+    
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -2,10 +2,14 @@
 package br.uem.bean;
 
 import br.uem.controller.CadastroController;
+import br.uem.dao.DaoTitulo;
 import br.uem.model.Titulo;
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 
@@ -18,7 +22,7 @@ public class ListarTitulosBean implements Serializable{
     private String valor;
     private String status;
     
-    
+    private DaoTitulo daoTitulo = new DaoTitulo();
     
     public ListarTitulosBean() {
     }
@@ -58,8 +62,9 @@ public class ListarTitulosBean implements Serializable{
     }
     
     
-    public List<Titulo> getTitulos() {
-        return CadastroController.getInstance().listarTitulos();
+    public List<Titulo> getTitulos() throws SQLException {
+     
+    return daoTitulo.recuperarTitulo();
     }
     
     
@@ -75,20 +80,32 @@ public class ListarTitulosBean implements Serializable{
         return "/cadastroTitulo";
     }
     
-    public String excluirTitulo(Titulo titulo){
-      CadastroController.getInstance().excluirTitulo(titulo);
-        return "/listarTitulos";
+    public String excluirTitulo(String titulo) throws SQLException{
+        boolean tituloExluido=  false;
+        tituloExluido = daoTitulo.excluiTitulos(titulo);
+        
+        
+        if(tituloExluido){
+        FacesMessage msg = new FacesMessage("Título Excluido com Sucesso!");
+        FacesContext.getCurrentInstance().addMessage("msg", msg);            
+        }else{
+        FacesMessage msg = new FacesMessage("Erro ao excluir titulo!");
+        FacesContext.getCurrentInstance().addMessage("msg", msg);  
+        }
+        
+        return "/listarTitulosAdm";
     }
     
-    public String editarTitulo(Titulo titulo){
+    public String editarTitulo(Titulo titulo) throws SQLException{
         this.setTitulo(titulo);
-        CadastroController.getInstance().editarTitulo(titulo);
         return "/editarTitulo";
     }
 
     public String sair(){
         return "index";
     }
+    
+    
     
 
 }

@@ -13,6 +13,7 @@ and open the template in the editor.
             <meta charset="utf-8"/>
             <title>Relação de Títulos</title>    
             <link rel="stylesheet" type="text/css" href="css/lista.css" />
+            <script type="text/javascript" src="js/exluirTitulo.js"/>
         </h:head>
         <h:body>
             
@@ -62,8 +63,8 @@ and open the template in the editor.
                         EXCLUIR/EDITAR
                     </f:facet>
                         <h:form id="form">
-                            <h:commandButton id="submitEcluir" value="Excluir" action="#{listarTitulos.excluirTitulo(titulo)}" styleClass="botao"/>
-                            <h:commandButton id="submitEditar" value="Editar" action="#{listarTitulos.editarTitulo(titulo)}" styleClass="botao"/>
+                            <h:commandButton id="submitEcluir" value="Excluir" action="#{listarTitulos.excluirTitulo(titulo.id)}" onchange="confirmaExclusao()" styleClass="botao"/>
+                            <h:commandButton id="submitEditar" value="Editar" action="#{listarTitulos.editarTitulo(titulo)}"  styleClass="botao"/>
                         </h:form>
                     
                 </h:column>

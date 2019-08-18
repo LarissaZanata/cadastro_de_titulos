@@ -1,9 +1,14 @@
 package br.uem.bean;
 
 import br.uem.controller.CadastroController;
+import br.uem.dao.DaoLogin;
+import br.uem.dao.DaoTitulo;
 import br.uem.model.Titulo;
+import br.uem.utils.ReplicaUsuarioAtual;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.swing.JOptionPane;
 
@@ -17,6 +22,8 @@ public class CadastroBean implements Serializable {
     private String valor;
     private String status;
 
+    private DaoLogin daoLogin = new DaoLogin();
+    private DaoTitulo daoTitulo = new DaoTitulo();
     
     public CadastroBean(){
         
@@ -57,12 +64,34 @@ public class CadastroBean implements Serializable {
     
     
     public String cadastrar() {
-        CadastroController.getInstance().salvarTitulo(new Titulo(descricao, dtVencimento, valor, status));
+        boolean cadastrado = false;
+        cadastrado = daoTitulo.gravarTitulo(this.getDescricao(), this.getDtVencimento(), this.getValor(), this.getStatus());
+        //CadastroController.getInstance().salvarTitulo(new Titulo(descricao, dtVencimento, valor, status));
+        
+        if(cadastrado){
+        FacesMessage msg = new FacesMessage("Título Cadastrado com Sucesso!");
+        FacesContext.getCurrentInstance().addMessage("msg", msg);            
+        }else{
+        FacesMessage msg = new FacesMessage("Erro ao cadastrar titulo!");
+        FacesContext.getCurrentInstance().addMessage("msg", msg);  
+        }
+        
+        
         return "/cadastroTitulo";
     }
     
-    public String voltarParaTitulos() {      
-        return "/listarTitulosAdm";
+    public String voltarParaTitulos() throws Exception{ 
+        String usuarioAtual = ReplicaUsuarioAtual.usuarioAtual;
+        boolean isAdm = false;
+        isAdm = daoLogin.isAdministrador(usuarioAtual);
+        
+        if(isAdm){
+            return "/listarTitulosAdm";
+        }else{
+           return "/listarTitulos"; 
+        }
+        
+        
     }
 
     
