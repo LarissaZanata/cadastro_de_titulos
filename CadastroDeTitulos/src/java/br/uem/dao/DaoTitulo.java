@@ -1,6 +1,7 @@
 package br.uem.dao;
 
 import br.uem.connection.SingleConnection;
+import br.uem.interfaceDao.InterfaceDaoTitulo;
 import br.uem.model.Titulo;
 import java.awt.List;
 import java.sql.Connection;
@@ -10,12 +11,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class DaoTitulo {
-    
-     
-    
-    
-        
+public class DaoTitulo implements InterfaceDaoTitulo {
+       
     private Connection connection;
     
     public DaoTitulo(){

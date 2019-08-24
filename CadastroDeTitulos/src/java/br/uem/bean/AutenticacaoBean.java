@@ -2,6 +2,7 @@
 package br.uem.bean;
 
 import br.uem.dao.DaoLogin;
+import br.uem.interfaceDao.InterfaceDaoLogin;
 import br.uem.utils.ReplicaUsuarioAtual;
 import java.io.Serializable;
 import static java.lang.System.out;
@@ -14,10 +15,8 @@ import javax.inject.Named;
 @Named(value = "autenticacaoBean")
 @SessionScoped
 public class AutenticacaoBean implements Serializable{
-   private static final String USUARIO_CORRETO = "admin";
-   private static final String SENHA_CORRETA = "admin";
    
-   private DaoLogin daoLogin = new DaoLogin();
+    private InterfaceDaoLogin daoLogin = new DaoLogin();
     
     private String login;
     private String senha;
@@ -67,6 +66,7 @@ public class AutenticacaoBean implements Serializable{
     }
     
     private void setaUsuarioAtual(String login){
+        //vem da classe gemerica somente para manter o usuário em memória
         ReplicaUsuarioAtual usuarioAtual = new ReplicaUsuarioAtual();
         usuarioAtual.usuarioAtual = login;
     }

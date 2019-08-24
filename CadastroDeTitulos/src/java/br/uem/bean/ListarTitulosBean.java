@@ -3,6 +3,7 @@ package br.uem.bean;
 
 import br.uem.controller.CadastroController;
 import br.uem.dao.DaoTitulo;
+import br.uem.interfaceDao.InterfaceDaoTitulo;
 import br.uem.model.Titulo;
 import java.io.Serializable;
 import java.sql.SQLException;
@@ -22,7 +23,7 @@ public class ListarTitulosBean implements Serializable{
     private String valor;
     private String status;
     
-    private DaoTitulo daoTitulo = new DaoTitulo();
+    private InterfaceDaoTitulo daoTitulo = new DaoTitulo();
     
     public ListarTitulosBean() {
     }

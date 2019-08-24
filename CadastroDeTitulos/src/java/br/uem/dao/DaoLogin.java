@@ -2,12 +2,13 @@
 package br.uem.dao;
 
 import br.uem.connection.SingleConnection;
+import br.uem.interfaceDao.InterfaceDaoLogin;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 
-public class DaoLogin {
+public class DaoLogin implements InterfaceDaoLogin{
     
     private Connection connection;
     
@@ -16,6 +17,7 @@ public class DaoLogin {
         connection = SingleConnection.getConectio();
     }
     
+    @Override
     public boolean validarLogin(String login, String senha) throws Exception{
         String sql = "select * from usuarios where login = '" +login+"' and senha = '" + senha + "'";
         //pega os dados do banco passando o sql q a gente criou:
@@ -29,6 +31,7 @@ public class DaoLogin {
         }
     }
     
+    @Override
     public boolean cadastrarFuncionario(String login, String senha, String adm, String nome)throws Exception{
         //String sql = "insert into usuarios values ('" +login+"', '" + senha + "', '" + adm + "', '" + nome + "')";
         try{
@@ -47,6 +50,7 @@ public class DaoLogin {
         }
     }
     
+    @Override
     public boolean isAdministrador(String login) throws Exception{
         String sql = "select * from usuarios where login = '" +login+"' and adm = 'Sim'";
         PreparedStatement statement = connection.prepareStatement(sql);

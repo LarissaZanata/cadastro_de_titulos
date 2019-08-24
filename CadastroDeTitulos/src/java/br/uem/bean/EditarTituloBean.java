@@ -2,6 +2,7 @@ package br.uem.bean;
 
 import br.uem.controller.CadastroController;
 import br.uem.dao.DaoTitulo;
+import br.uem.interfaceDao.InterfaceDaoTitulo;
 import br.uem.model.Titulo;
 import java.io.Serializable;
 import java.sql.SQLException;
@@ -15,7 +16,7 @@ import javax.inject.Named;
 @SessionScoped
 public class EditarTituloBean implements Serializable {
     
-    private DaoTitulo daoTitulo = new DaoTitulo();
+    private InterfaceDaoTitulo daoTitulo = new DaoTitulo();
     
     private String descricao;
     private String dtVencimento;

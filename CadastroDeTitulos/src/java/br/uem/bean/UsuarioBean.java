@@ -7,6 +7,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import br.uem.dao.DaoLogin;
+import br.uem.interfaceDao.InterfaceDaoLogin;
 
 @Named(value = "usuarioBean")
 @SessionScoped
@@ -17,7 +18,7 @@ public class UsuarioBean implements Serializable{
     private String nome;
     private String adm;
     
-    private DaoLogin daoLogin = new DaoLogin();
+    private InterfaceDaoLogin daoLogin = new DaoLogin();
 
     
     public UsuarioBean(){

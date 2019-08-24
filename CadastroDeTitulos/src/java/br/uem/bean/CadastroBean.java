@@ -3,6 +3,8 @@ package br.uem.bean;
 import br.uem.controller.CadastroController;
 import br.uem.dao.DaoLogin;
 import br.uem.dao.DaoTitulo;
+import br.uem.interfaceDao.InterfaceDaoLogin;
+import br.uem.interfaceDao.InterfaceDaoTitulo;
 import br.uem.model.Titulo;
 import br.uem.utils.ReplicaUsuarioAtual;
 import java.io.Serializable;
@@ -22,8 +24,8 @@ public class CadastroBean implements Serializable {
     private String valor;
     private String status;
 
-    private DaoLogin daoLogin = new DaoLogin();
-    private DaoTitulo daoTitulo = new DaoTitulo();
+    private InterfaceDaoLogin daoLogin = new DaoLogin();
+    private InterfaceDaoTitulo daoTitulo = new DaoTitulo();
     
     public CadastroBean(){
         
