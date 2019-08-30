@@ -9,36 +9,33 @@
         <meta charset="utf-8"/>
         <link rel="stylesheet" type="text/css" href="css/Login.css" />
         <script type="text/javascript" src="js/index.js"/>
-    </h:head>
-    <h:body>
+   </h:head>
+    <h:body class="fundo">
         <h1>Condomínio Green Park</h1>
-        <h2>Login - Controle de Títulos</h2>
+        
         <h:form id="form">
-
-
-            <h:outputText value="Login:" styleClass="rotulo" />
-            <br />
+            <h3>Login - Controle de Títulos</h3><br/><br/>
+            <h:outputText value="Usuário:" styleClass="rotulo" />
+            <br/>
             <h:inputText id="nome" title="Login" label="Login"
-                         value="#{autenticacaoBean.login}" styleClass="campo"  required="true"/>
-            <br />
+                         value="#{autenticacaoBean.login}" styleClass="campo" required="true"/>
             <br />
             <h:outputText value="Senha:" styleClass="rotulo"/>
             <br />
             <h:inputSecret id="senha" label="Senha" value="#{autenticacaoBean.senha}" required="true" /> 
             <br />
-            <br /> 
             <h:messages id="msgErro" style="color: red"/>
-            <h:commandButton id="submit"  value="Entrar" action="#{autenticacaoBean.entrar()}" styleClass="botao"/>
             
-            
+            <h:commandButton id="submit"  value="Entrar" action="#{autenticacaoBean.entrar()}" styleClass="botao"/>   
+            <br /><br />
             
         </h:form>
         
+                    
         <h:form id="formCadastro">
+            <p>Ainda não tem conta? <br></br> Cadastre-se!</p>
             <h:commandButton id="submit"  value="Criar Conta" action="#{autenticacaoBean.cadastrarUsuario()}" styleClass="botao"/>
         </h:form>
-        <br />
-        
     </h:body>
 </html>
     

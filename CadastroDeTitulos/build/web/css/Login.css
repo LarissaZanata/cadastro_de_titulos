@@ -1,31 +1,26 @@
-@font-face {
-    font-family: Montserrat-Regular;
-    src: url('../fonts/montserrat/Montserrat-Regular.ttf'); 
+h1{
+   font-family: Georgia;
+   padding-left:420px;
   }
   
-  h1{
-    font-family: Montserrat-Regular, sans-serif;
-    text-align: center;
-    border: 2px solid;
-    background-color: lightgray;
+ h3{
+    font-family: Georgia;
+  }
+
+ form{ 
+    font-family: Georgia;
+    font-size:20px;
+    padding-left: 450px;
+ }
+  
+.fundo {
+    background: url(../resources/home.jpg);  
   }
   
-  h2{
-    font-family: Montserrat-Regular, sans-serif;
-  }
+
   
-  form{
-    background-color: aliceblue;
-    font-family: Montserrat-Regular, sans-serif;
-    padding: 10px;
-    font-size: 20px;
-    border: 2px solid;
-  }
-  
-  body{
-    background-color: lightcyan;
-   
-  }
+
+ 
   
   
   

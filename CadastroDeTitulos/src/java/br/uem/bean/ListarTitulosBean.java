@@ -23,7 +23,6 @@ public class ListarTitulosBean implements Serializable{
     private String valor;
     private String status;
     
-    private InterfaceDaoTitulo daoTitulo = new DaoTitulo();
     
     public ListarTitulosBean() {
     }
@@ -64,8 +63,7 @@ public class ListarTitulosBean implements Serializable{
     
     
     public List<Titulo> getTitulos() throws SQLException {
-     
-    return daoTitulo.recuperarTitulo();
+    return CadastroController.getInstance().recuperarTitulo();
     }
     
     
@@ -83,8 +81,8 @@ public class ListarTitulosBean implements Serializable{
     
     public String excluirTitulo(String titulo) throws SQLException{
         boolean tituloExluido=  false;
-        tituloExluido = daoTitulo.excluiTitulos(titulo);
         
+        tituloExluido = CadastroController.getInstance().excluirTitulo(titulo);
         
         if(tituloExluido){
         FacesMessage msg = new FacesMessage("Título Excluido com Sucesso!");

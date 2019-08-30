@@ -15,10 +15,9 @@ and open the template in the editor.
             <link rel="stylesheet" type="text/css" href="css/lista.css" />
             <script type="text/javascript" src="js/exluirTitulo.js"/>
         </h:head>
-        <h:body>
-            
+            <h:body class="fundo">
            <h1>Condomínio Green Park</h1>
-		   <h2>Títulos - Controle de Títulos</h2>
+           <h2>Relação de Títulos</h2>
             <br />
             <br />
             
@@ -74,7 +73,7 @@ and open the template in the editor.
         <h:form id="form">
             <h:commandButton id="submit" value="Cadastrar novo Título" action="#{listarTitulos.cadastrarNovoTitulo()}" styleClass="botao"/>
         </h:form>
-            
+            <br></br>    
         <h:form id="formSair">
             <h:commandButton id="submit" value="Sair" action="#{listarTitulos.sair()}" styleClass="botao"/>
         </h:form>    

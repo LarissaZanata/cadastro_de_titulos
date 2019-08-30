@@ -23,9 +23,6 @@ public class CadastroBean implements Serializable {
     private String dtVencimento;
     private String valor;
     private String status;
-
-    private InterfaceDaoLogin daoLogin = new DaoLogin();
-    private InterfaceDaoTitulo daoTitulo = new DaoTitulo();
     
     public CadastroBean(){
         
@@ -67,9 +64,8 @@ public class CadastroBean implements Serializable {
     
     public String cadastrar() {
         boolean cadastrado = false;
-        cadastrado = daoTitulo.gravarTitulo(this.getDescricao(), this.getDtVencimento(), this.getValor(), this.getStatus());
-        //CadastroController.getInstance().salvarTitulo(new Titulo(descricao, dtVencimento, valor, status));
-        
+        cadastrado = CadastroController.getInstance().cadastrarTitulo(this.getDescricao(), this.getDtVencimento(), this.getValor(), this.getStatus());
+                
         if(cadastrado){
         FacesMessage msg = new FacesMessage("Título Cadastrado com Sucesso!");
         FacesContext.getCurrentInstance().addMessage("msg", msg);            
@@ -85,7 +81,8 @@ public class CadastroBean implements Serializable {
     public String voltarParaTitulos() throws Exception{ 
         String usuarioAtual = ReplicaUsuarioAtual.usuarioAtual;
         boolean isAdm = false;
-        isAdm = daoLogin.isAdministrador(usuarioAtual);
+        
+        isAdm = CadastroController.getInstance().isAdm(usuarioAtual);
         
         if(isAdm){
             return "/listarTitulosAdm";

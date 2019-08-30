@@ -16,7 +16,6 @@ import javax.inject.Named;
 @SessionScoped
 public class EditarTituloBean implements Serializable {
     
-    private InterfaceDaoTitulo daoTitulo = new DaoTitulo();
     
     private String descricao;
     private String dtVencimento;
@@ -62,8 +61,8 @@ public class EditarTituloBean implements Serializable {
     }
     
     public String salvar(Titulo titulo) throws InterruptedException, SQLException {
-        
-       boolean tituloSalvo = daoTitulo.salvaAlteracaoTitulo(titulo);
+
+       boolean tituloSalvo = CadastroController.getInstance().salvarAlteracaoTitulo(titulo);
         
        return "/listarTitulosAdm";
     }   

@@ -1,6 +1,7 @@
 
 package br.uem.bean;
 
+import br.uem.controller.CadastroController;
 import br.uem.dao.DaoLogin;
 import br.uem.interfaceDao.InterfaceDaoLogin;
 import br.uem.utils.ReplicaUsuarioAtual;
@@ -15,8 +16,6 @@ import javax.inject.Named;
 @Named(value = "autenticacaoBean")
 @SessionScoped
 public class AutenticacaoBean implements Serializable{
-   
-    private InterfaceDaoLogin daoLogin = new DaoLogin();
     
     private String login;
     private String senha;
@@ -49,8 +48,9 @@ public class AutenticacaoBean implements Serializable{
         
         boolean autentica = false;
         boolean isAdm = false;
-        autentica = daoLogin.validarLogin(this.getLogin(), this.getSenha());
-        isAdm = daoLogin.isAdministrador(this.getLogin());
+        autentica = CadastroController.getInstance().validarLogin(this.getLogin(), this.getSenha());
+        isAdm = CadastroController.getInstance().isAdm(this.getLogin());
+        
         if(autentica){
             if(isAdm){
                 return "/listarTitulosAdm";

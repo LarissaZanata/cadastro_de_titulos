@@ -14,37 +14,30 @@ and open the template in the editor.
         <meta charset="utf-8"/>
        <link rel="stylesheet" type="text/css" href="css/Cadastro.css" />
     </h:head>
-    <h:body>
+        <h:body class="fundo">
         <h1>Condomínio Green Park</h1>
-        <h2>Editar - Controle de Títulos</h2>
         <div id="formCad">
             
             <h:form id="form" >
-               
-            <h:outputText value="Código:" styleClass="rotulo" /><br></br>
-            <p:inputText id="nomeCodigo" title="Código" value="#{listarTitulos.titulo.id}" styleClass="campo" readonly="true" disabled="true"></p:inputText><br><br></br></br>
-            
-
-            <h:outputText value="Descrição:" styleClass="rotulo" /><br></br>
-            <p:inputText id="nome1" title="Descrição" value="#{listarTitulos.titulo.descricao}" styleClass="campo"></p:inputText><br><br></br></br>
-                    
-            <h:outputText value="Data de Vencimento" styleClass="rotulo" /><br></br>
-            <p:inputMask id="teste" mask="99/99/9999" value="#{listarTitulos.titulo.dtVencimento}" required="true" requiredMessage="Preencha o campo data" size="10" />
-            <br><br></br></br> 
-            
-            <h:outputText value="Valor:" styleClass="rotulo" /><br></br>
-            <p:inputMask id="teste2" mask="999.99"  value="#{listarTitulos.titulo.valor}" required="true" requiredMessage="Preencha o campo valor" size="10"/>
-            <br><br></br></br>
-            
-                  
+             <h3>Editar - Controle de Títulos</h3>
+             <h:outputText value="Código:" styleClass="rotulo" /><br>
+                 <p:inputText id="nomeCodigo" title="Código" value="#{listarTitulos.titulo.id}" styleClass="campo" readonly="true" disabled="true"></p:inputText></br>
+                 <br></br>
+                 <h:outputText value="Descrição:" styleClass="rotulo" /><br>
+            <p:inputText id="nome1" title="Descrição" value="#{listarTitulos.titulo.descricao}" styleClass="campo"></p:inputText></br>
+                 <br></br>   
+            <h:outputText value="Data de Vencimento" styleClass="rotulo" /><br>
+            <p:inputMask id="teste" mask="99/99/9999" value="#{listarTitulos.titulo.dtVencimento}" required="true" requiredMessage="Preencha o campo data" size="10" /></br>
+                <br></br>
+            <h:outputText value="Valor:" styleClass="rotulo" /><br>
+            <p:inputMask id="teste2" mask="999.99" value="#{listarTitulos.titulo.valor}" required="true" requiredMessage="Preencha o campo valor" size="10"/></br> 
+                  <br></br>
             <h:selectOneMenu value="#{listarTitulos.titulo.status}">
                 <f:selectItem itemValue="Recebido" itemLabel="Recebido" />
                 <f:selectItem itemValue="Pendente" itemLabel="Pendente" />
-            </h:selectOneMenu>
-            <br><br></br></br>        
-            
-            <h:commandButton id="submit" value="Salvar" action="#{editarTitulo.salvar(listarTitulos.titulo)}" styleClass="botao"/><br><br><br></br></br></br>            
-
+            </h:selectOneMenu>      
+            <br></br><br></br>
+                <h:commandButton id="submit" value="Salvar" action="#{editarTitulo.salvar(listarTitulos.titulo)}" styleClass="botao"/>
         </h:form>
             
  </div>

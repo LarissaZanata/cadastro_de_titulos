@@ -33,7 +33,6 @@ public class DaoLogin implements InterfaceDaoLogin{
     
     @Override
     public boolean cadastrarFuncionario(String login, String senha, String adm, String nome)throws Exception{
-        //String sql = "insert into usuarios values ('" +login+"', '" + senha + "', '" + adm + "', '" + nome + "')";
         try{
             String sql = " insert into usuarios (login, senha, adm, nome)"
                 + " values (?, ?, ?, ?)";

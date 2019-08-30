@@ -1,6 +1,7 @@
 package br.uem.bean;
 
 
+import br.uem.controller.CadastroController;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -18,7 +19,7 @@ public class UsuarioBean implements Serializable{
     private String nome;
     private String adm;
     
-    private InterfaceDaoLogin daoLogin = new DaoLogin();
+   // private InterfaceDaoLogin daoLogin = new DaoLogin();
 
     
     public UsuarioBean(){
@@ -73,14 +74,13 @@ public class UsuarioBean implements Serializable{
         boolean cadastrado = false;
         
         if(verificaSenhas(this.getSenha(), this.getConfirmaSenha())){
-            cadastrado = daoLogin.cadastrarFuncionario(this.getUsuario(), this.getSenha(), this.getAdm(), this.getNome());
+           cadastrado = CadastroController.getInstance().cadastrarFuncionario(this.getUsuario(), this.getSenha(), this.getAdm(), this.getNome());
         }else{
             FacesMessage msg = new FacesMessage("Senhas diferentes!");
             FacesContext.getCurrentInstance().addMessage("erro", msg); 
         }
-        
-        
-        //verifica de cadastro deu certo
+
+        //verifica se cadastro deu certo
         if(cadastrado){
             FacesMessage msg = new FacesMessage("Cadastrado com Sucesso!");
             FacesContext.getCurrentInstance().addMessage("sucesso", msg);

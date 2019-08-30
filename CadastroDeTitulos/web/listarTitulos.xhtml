@@ -14,10 +14,9 @@ and open the template in the editor.
             <title>Relação de Títulos</title>    
             <link rel="stylesheet" type="text/css" href="css/lista.css" />
         </h:head>
-        <h:body>
-            
+            <h:body class="fundo">
            <h1>Condomínio Green Park</h1>
-		   <h2>Títulos - Controle de Títulos</h2>
+           
             <br />
             <br />
             
@@ -58,14 +57,14 @@ and open the template in the editor.
                 </h:column>
                 
             </h:dataTable>
+              
+            <h:form id="form">
+                <h:commandButton id="submit" value="Cadastrar novo Título" action="#{listarTitulos.cadastrarNovoTitulo()}" styleClass="botao"/>
+            </h:form>
             
-        <h:form id="form">
-            <h:commandButton id="submit" value="Cadastrar novo Título" action="#{listarTitulos.cadastrarNovoTitulo()}" styleClass="botao"/>
-        </h:form>
-            
-        <h:form id="formSair">
-            <h:commandButton id="submit" value="Sair" action="#{listarTitulos.sair()}" styleClass="botao"/>
-        </h:form>    
+            <h:form id="formSair">
+                <h:commandButton id="submit" value="Sair" action="#{listarTitulos.sair()}" styleClass="botao"/>
+            </h:form>
         </h:body>
     </f:view>
 </html>
